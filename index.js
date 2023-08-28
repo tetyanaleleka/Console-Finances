@@ -119,12 +119,6 @@ for(let index = 0; index < finances.length; index++){
       if(change < least[1]){
         least = [finances[index][0], finances[index][1]]
       }
-
-      
-      // console.log(`total: ${total}`);
-      // console.log(`change: ${change}`);
-      // console.log(`net: ${net}`);
-      // console.log(`netArray ${netArray}`);
     }
   }
 }
@@ -136,13 +130,26 @@ for (let index = 0; index < netArray.length; index++){
 
 average = Math.round((netChangeSum / 86) * 100) /100;
 
-analysis = 'Financial Analysis' + '\n' +
-'-----------------------------' + '\n'+
-'Total Months: ' + months + '\n' +
-'Total: $' + total + '\n' +
-'Average Change: ' + average + '\n' +
-'Greatest Increase in Profit: ' + greatest + '\n' +
-'Greatest Decrease in Profit: ' + least + '\n';
+//Concatenation 
+
+// analysis = 'Financial Analysis' + '\n' +
+// '-----------------------------' + '\n'+
+// 'Total Months: ' + months + '\n' +
+// 'Total: $' + total + '\n' +
+// 'Average Change: ' + average + '\n' +
+// 'Greatest Increase in Profit: ' + greatest[0] + ': $' + greatest[1] + '\n' +
+// 'Greatest Decrease in Profit: ' + least[0] + ': $' + greatest[1] + '\n';
 
 
+// String Literal
+
+analysis = `
+Financial Analysis
+------------------
+Total Months: ${months}
+Total: $ ${total}
+Average Change: ${average}
+Greatest Increase in Profit: ${greatest[0]}: $${greatest[1]}
+Greatest Decrease in Profit: ${least[0]}: $${least[1]}
+`
 console.log(analysis)
