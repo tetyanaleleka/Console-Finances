@@ -100,8 +100,8 @@ let netArray = [];
 let netChangeSum = 0;
 // least min
 // greatest max
-// least = [];
-// greatest = [];
+least = ['', 9999999999999];
+greatest = ['', 0];
 
 for(let index = 0; index < finances.length; index++){
   for(let index2 = 0; index2 < finances[index].length; index2++){
@@ -111,6 +111,16 @@ for(let index = 0; index < finances.length; index++){
       change = finances[index][index2] - net;
       net = finances[index][index2];
       netArray.push(change);
+
+      if (change > greatest[1]){
+        greatest = [finances[index][0], finances[index][1]]
+      }
+
+      if(change < least[1]){
+        least = [finances[index][0], finances[index][1]]
+      }
+
+      
       // console.log(`total: ${total}`);
       // console.log(`change: ${change}`);
       // console.log(`net: ${net}`);
@@ -119,105 +129,20 @@ for(let index = 0; index < finances.length; index++){
   }
 }
 
+
 for (let index = 0; index < netArray.length; index++){
-  netChangeSum = netChangeSum + netArray[index];
+  netChangeSum += netArray[index];
 }
 
-average = Math.round((netChangeSum / 86) *100) /100;
+average = Math.round((netChangeSum / 86) * 100) /100;
 
-analysis = `Financial Analysis` + `\n` +
-`-----------------------------` + `\n`+
-`Total Months ` + months + `\n` +
-`Total: $` + total + `\n` +
-
-
-
-
-// var average;
-// var analysis;
-// var months = finances.length;
-// var total = 0;
-// var change = 0;
-// var net = 0;
-// var netArray = [];
-// var netChangeSum = 0;
-// var least = ['', 9999999999]; //Initialising least to a high value
-// var greatest = ['', 0]; //Initialising greatest to a low value
+analysis = 'Financial Analysis' + '\n' +
+'-----------------------------' + '\n'+
+'Total Months: ' + months + '\n' +
+'Total: $' + total + '\n' +
+'Average Change: ' + average + '\n' +
+'Greatest Increase in Profit: ' + greatest + '\n' +
+'Greatest Decrease in Profit: ' + least + '\n';
 
 
-// Loop through each financial record
-
-// 'i' represents each financial record or row in the dataset
-// 'j' represents the elements within each financial record (i.e., the date of profit/loss value).
-// for (var i= 0; i < finances.length; i++) {
-//   for (var j = 0; j < finances [i].length; j++) {
-//     //Checking if the value is not a string (assuming numbers are the Profit/Losses)
-//   if (typeof finances [i][j] !== 'string') {
-//     total += finances [i][j]; // Calculating total profit/loss
-//     change = finances [i][j] - net; //Calculating change from previous month
-//     net = finances [i][j]; //Updating net to current month's profit/loss
-//     netArray.push(change); // Storing changes for calculating average
-
-//     // Finding greatest increase in profit/loss
-//     if (change > greatest [1]) {
-//       greatest = [finances [i][0], finances [i][1]] //Updating greatest array
-//     }
-//     //Finding greatest decrease
-//   if (change < least [1]) {
-//     least = [finances[i][0], finances [i][1]]; //Updating least array
-//   }
-//console.log('total: ${total}');
-//console.log('change: ${change}');
-//console.log('net: ${net}');
-//console.log('netArray: ${netArray}');
-//}
-// }
-// }
-// }
-
-// //Calculating net change sum for calculating average
-// for (var i = 0; i < netArray.length; i++) {
-//   netChangeSum += netArray [i];
-// }
-
-// // Calculating average change 
-// average = Math.round((netChangeSum / (months - 1)) * 100) / 100;
-// // This line calculates the average change and then divides by 100 to round to the nearest 100th.
-// // The reason for using (month-1) in the denominator is that
-// // I am calculating the average change based on the changes between months.
-// // If I have 'n' months in the future, thare are n - 1 changes between them.
-// // So, (month - 1) provides the correct denominator for the average calculation.
-// // This approach is more flexible and accurate if the number of months changes in different datasets.
-
-// // or
-
-// // another formula // To calculate tha average change and round to the nearest hundredth
-// // average = (netChangeSum / (month - 1)).toFixed(2);
-
-
-// // Preparing analysis report
-// // String concatenation to combine strings and variables in my analysis report 
-// analysis = 
-//   'Financial Analysis'+'\n'+
-// '--------------------'+'\n'+
-// 'Total Months: ' + months + '\n'+
-// 'Total: $' + total +'\n'+
-// 'Average Change:'+average + '\n'+
-// 'Greatest Increase in Profits/Losses: '+greatest[0] + ' ($' + greatest[1]+ ')'+ '\n'+
-// 'Greatest Decrease in Profits/Losses: '+least[0]+'($' + least[1]+')' + '\n';
-
-// // Alternate simplified string literal as suggested by mentor
-
-// // analysis = 
-// //  'Financial Analysis
-// // --------------------
-// // Total Months: ${months}
-// // Total: $ ${total}
-// // Average Change: ${average}
-// // Greatest Increase in Profit: ${greatest(0)}: $${greatest[1]}
-// // Greatest Decrease in Profit: ${least[0]}: $${least[1]}'
-
-
-// // Displaying analysis report in console
-// console.log(analysis);
-
+console.log(analysis)
