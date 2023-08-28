@@ -128,7 +128,8 @@ average = Math.round((netChangeSum / 86) *100) /100;
 analysis = `Financial Analysis` + `\n` +
 `-----------------------------` + `\n`+
 `Total Months ` + months + `\n` +
-``
+`Total: $` + total + `\n` +
+
 
 
 
